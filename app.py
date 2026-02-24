@@ -6,6 +6,15 @@ DATABASE_URL = os.environ.get("DATABASE_URL")
 conn = psycopg2.connect(DATABASE_URL)
 cursor = conn.cursor()
 
+cursor.execute("""
+CREATE TABLE IF NOT EXISTS assets (
+    id SERIAL PRIMARY KEY,
+    asset_name TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+""")
+conn.commit()
+
 """IT Agent Web Application"""
 from flask import Flask, render_template_string, jsonify, request, render_template, redirect, url_for, flash, make_response
 from flask_cors import CORS
