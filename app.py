@@ -1,3 +1,11 @@
+import os
+import psycopg2
+
+DATABASE_URL = os.environ.get("DATABASE_URL")
+
+conn = psycopg2.connect(DATABASE_URL)
+cursor = conn.cursor()
+
 """IT Agent Web Application"""
 from flask import Flask, render_template_string, jsonify, request, render_template, redirect, url_for, flash, make_response
 from flask_cors import CORS
