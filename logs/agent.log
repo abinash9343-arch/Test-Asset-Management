@@ -3997,3 +3997,8 @@
 2026-02-24 11:06:34,063 - Draup Asset Management - WARNING - warning:85 - Health check: degraded
 2026-02-24 11:07:35,122 - Draup Asset Management - WARNING - warning:85 - Health check: degraded
 2026-02-24 11:08:36,179 - Draup Asset Management - WARNING - warning:85 - Health check: degraded
+2026-02-24 11:40:05,171 - Draup Asset Management - INFO - info:81 - IT Agent initialized: Draup Asset Management
+2026-02-24 11:40:05,174 - Draup Asset Management - INFO - info:81 - Monitoring started
+2026-02-24 11:40:05,174 - Draup Asset Management - INFO - info:81 - IT Agent started
+2026-02-24 11:40:06,218 - Draup Asset Management - WARNING - warning:85 - Health check: degraded
+2026-02-24 11:40:06,241 - Draup Asset Management - INFO - info:81 - Initial health check: degraded
