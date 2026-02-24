@@ -1,0 +1,3 @@
+"""IT Agent Solution Package"""
+__version__ = "1.0.0"
+

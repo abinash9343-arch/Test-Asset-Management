@@ -1,0 +1,32 @@
+agent:
+  max_retries: 3
+  name: Draup Asset Management
+  timeout: 30
+  version: 1.0.0
+auth:
+  password: z&0CI$xTSM%p
+  secret_key: change-this-in-production-please
+  username: admin
+diagnostics:
+  enable_verbose: false
+  save_error_details: true
+email:
+  enabled: true
+  password: your_app_password
+  sender_email: your_email@gmail.com
+  smtp_port: 587
+  smtp_server: smtp.gmail.com
+  username: your_email@gmail.com
+logging:
+  backup_count: 5
+  file: logs/agent.log
+  level: INFO
+  max_size_mb: 10
+monitoring:
+  check_interval: 60
+  enabled: true
+  health_check_timeout: 5
+server:
+  debug: true
+  host: 127.0.0.1
+  port: 5000
