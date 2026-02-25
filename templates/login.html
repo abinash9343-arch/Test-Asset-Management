@@ -34,8 +34,14 @@
 
         .login-card h1 {
             color: #667eea;
-            margin-bottom: 10px;
-            font-size: 2em;
+            margin-bottom: 5px;
+            font-size: 1.8em;
+        }
+
+        .login-card .logo {
+            height: 50px;
+            width: auto;
+            margin-bottom: 20px;
         }
 
         .login-card p {
@@ -101,7 +107,8 @@
 
 <body>
     <div class="login-card">
-        <h1>🖥️ Draup Asset Management</h1>
+        <img src="https://draup.com/wp-content/uploads/2023/11/Draup-Logo-1.webp" alt="Draup Logo" class="logo">
+        <h1>Draup Asset Management</h1>
         <p>Please login to access the dashboard</p>
 
         {% with messages = get_flashed_messages() %}

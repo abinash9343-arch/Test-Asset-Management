@@ -140,9 +140,11 @@ HTML_TEMPLATE = '''<!DOCTYPE html>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 100vh; padding: 20px; }
         .container { max-width: 1200px; margin: 0 auto; }
-        .header { background: white; padding: 30px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); margin-bottom: 20px; text-align: center; }
-        .header h1 { color: #667eea; font-size: 2.5em; margin-bottom: 10px; }
-        .header p { color: #666; font-size: 1.1em; }
+        .header { background: white; padding: 20px 30px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); margin-bottom: 20px; display: flex; align-items: center; justify-content: center; gap: 20px; }
+        .logo { height: 60px; width: auto; }
+        .header-content { text-align: left; }
+        .header h1 { color: #667eea; font-size: 2.2em; margin-bottom: 5px; }
+        .header p { color: #666; font-size: 1em; }
         .tabs { display: flex; gap: 10px; margin-bottom: 20px; justify-content: center; flex-wrap: wrap; }
         .tab-button { padding: 10px 20px; border-radius: 20px; border: none; cursor: pointer; background: rgba(255,255,255,0.2); color: #fff; font-weight: 600; transition: all 0.2s; }
         .tab-button.active { background: #fff; color: #667eea; box-shadow: 0 6px 18px rgba(0,0,0,0.15); }
@@ -213,7 +215,11 @@ HTML_TEMPLATE = '''<!DOCTYPE html>
                  <span style="color: #555; font-weight: 600;">👤 {{ current_user.id }}</span>
                  <a href="/logout" class="btn" style="padding: 8px 15px; font-size: 0.9em; text-decoration: none; margin: 0;">Logout</a>
             </div>
-            <h1>🖥️ Draup Asset Management</h1>
+            <img src="https://draup.com/wp-content/uploads/2023/11/Draup-Logo-1.webp" alt="Draup Logo" class="logo">
+            <div class="header-content">
+                <h1>Draup Asset Management</h1>
+                <p>Internal IT Asset Tracking System</p>
+            </div>
         </div>
         <div class="tabs">
             <button class="tab-button active" id="tab-assets" onclick="showSection('assets')">IT Assets</button>
@@ -1117,4 +1123,23 @@ if __name__ == '__main__':
     print(f"Open your browser at: http://127.0.0.1:{port}")
     print("\nPress Ctrl+C to stop\n")
     app.run(host='0.0.0.0', port=port, debug=True, use_reloader=False)
+
+from flask import request, redirect
+
+@app.route("/add_asset", methods=["POST"])
+def add_asset():
+    asset_name = request.form.get("asset_name")
+    owner = request.form.get("owner")
+    status = request.form.get("status")
+    location = request.form.get("location")
+
+    cursor.execute("""
+    INSERT INTO assets (asset_name, owner, status, location)
+    conn.commit()
+    VALUES (%s, %s, %s, %s)
+    """, (asset_name, owner, status, location))
+
+    conn.commit()
+
+    return redirect("/")
 
