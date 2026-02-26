@@ -9,12 +9,25 @@ cursor = conn.cursor()
 cursor.execute("""
 CREATE TABLE IF NOT EXISTS assets (
     id SERIAL PRIMARY KEY,
-    asset_name TEXT,
+    name TEXT,
+    asset_type TEXT,
+    status TEXT,
+    owner TEXT,
+    owner_email TEXT,
+    employee_code TEXT,
+    department TEXT,
+    location TEXT,
+    serial_number TEXT,
+    purchase_date TEXT,
+    warranty_expiry TEXT,
+    configuration TEXT,
+    accessories TEXT,
+    invoice TEXT,
+    tags TEXT,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 """)
 conn.commit()
-
 """IT Agent Web Application"""
 from flask import Flask, render_template_string, jsonify, request, render_template, redirect, url_for, flash, make_response
 from flask_cors import CORS
